@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IPL 2023 — Points Table</title>
+  <link href="https://crystalpng.com/wp-content/uploads/2025/09/ipl-logo.png" rel="stylesheet">
+  <style>
+    :root{--bg:#071724;--card:#0b2633;--accent:#ffcc00;--muted:#9fb4c8;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#05121a 0%, #071e29 100%);color:#e9f7fb}
+
+    .wrap{max-width:1100px;margin:28px auto;padding:18px}
+    .header{display:flex;gap:18px;align-items:center}
+    .header .hero-img{width:96px;height:96px;border-radius:12px;overflow:hidden;flex:0 0 auto;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .header .hero-img img{width:100%;height:100%;object-fit:cover}
+    .header .title{flex:1}
+    .title h1{margin:0;font-size:22px}
+    .title p{margin:6px 0 0;color:var(--muted)}
+    .home-btn{background:var(--accent);color:#071724;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    .card{margin-top:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));padding:18px;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+
+    .table-wrap{overflow:auto;margin-top:8px}
+    table{width:100%;border-collapse:collapse;min-width:780px}
+    thead th{position:sticky;top:0;background:linear-gradient(180deg,#071f2b, #072733);color:#eaf6ff;padding:12px;text-align:left;font-weight:700}
+    tbody td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    tbody tr:hover{background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));transform:translateY(-2px);box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+
+    .team-cell{display:flex;align-items:center;gap:12px}
+    .team-cell img{width:84px;height:48px;object-fit:cover;border-radius:6px}
+    .rank{font-weight:700;color:var(--accent)}
+    .points{font-weight:700}
+
+    .note{margin-top:12px;color:var(--muted);font-size:13px}
+
+    @media (max-width:880px){.team-cell img{width:64px;height:44px}} 
+    @media (max-width:640px){.header{flex-direction:column;align-items:flex-start}.header .hero-img{width:84px;height:84px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="hero-img">
+        <!-- using uploaded local image as header -->
+        <img src="https://crystalpng.com/wp-content/uploads/2025/09/ipl-logo.png" alt="IPL header">
+      </div>
+      <div class="title">
+        <h1>IPL 2023 — Points Table</h1>
+        <p>Final standings for the 2023 Indian Premier League (Tata IPL 2023)</p>
+      </div>
+      <a class="home-btn" href="homepage.html">HOME PAGE</a>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px">Points Table — Season Summary</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>RANK</th>
+              <th>TEAM</th>
+              <th>PLAYED</th>
+              <th>WON</th>
+              <th>LOST</th>
+              <th>NET RR</th>
+              <th>POINTS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank">1</td>
+              <td class="team-cell"><img src="https://i.pinimg.com/originals/5c/2e/bf/5c2ebf4727e5349e28a57a51dea79a30.jpg" alt="GT"> Gujarat Titans</td>
+              <td>14</td>
+              <td>10</td>
+              <td>4</td>
+              <td>+0.809</td>
+              <td class="points">20</td>
+            </tr>
+            <tr>
+              <td class="rank">2</td>
+              <td class="team-cell"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmBMb-8_GDkwx6iYJxvkOGYED-W3b7RLn08Q_MvR69gVQwjX70tS94hV1kcX_smQWy-co&usqp=CAU" alt="CSK"> Chennai Super Kings</td>
+              <td>14</td>
+              <td>8</td>
+              <td>5</td>
+              <td>+0.652</td>
+              <td class="points">17</td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td class="team-cell"><img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202201/Lucknow_Super_Giant_logo_1200x768.jpeg?size=690:388" alt="LSG"> Lucknow Super Giants</td>
+              <td>14</td>
+              <td>8</td>
+              <td>5</td>
+              <td>+0.284</td>
+              <td class="points">17</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="team-cell"><img src="https://i.pinimg.com/originals/28/09/a8/2809a841bb08827603ccac5c6aee8b33.png" alt="MI"> Mumbai Indians</td>
+              <td>14</td>
+              <td>8</td>
+              <td>6</td>
+              <td>-0.044</td>
+              <td class="points">16</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="team-cell"><img src="https://i.pinimg.com/736x/ce/b7/04/ceb7040289e35b9a2358cf18bb6a9315.jpg" alt="RR"> Rajasthan Royals</td>
+              <td>14</td>
+              <td>7</td>
+              <td>7</td>
+              <td>+0.148</td>
+              <td class="points">14</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="team-cell"><img src="https://i.pinimg.com/564x/1e/94/a9/1e94a9c8b7a803226d586fb2b0deca0b.jpg" alt="RCB"> Royal Challengers Bangalore</td>
+              <td>14</td>
+              <td>7</td>
+              <td>7</td>
+              <td>+0.135</td>
+              <td class="points">14</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="team-cell"><img src="https://static.india.com/wp-content/uploads/2023/02/Collage-Maker-23-Mar-2023-06-15-PM-6120.jpg?impolicy=Medium_Resize&w=1200&h=800" alt="KKR"> Kolkata Knight Riders</td>
+              <td>14</td>
+              <td>6</td>
+              <td>8</td>
+              <td>-0.239</td>
+              <td class="points">12</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="team-cell"><img src="https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2022/12/23/217888-untitled-design-1.png?itok=VRe4SHtx" alt="PBKS"> Punjab Kings</td>
+              <td>14</td>
+              <td>6</td>
+              <td>8</td>
+              <td>-0.304</td>
+              <td class="points">12</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="team-cell"><img src="https://static.india.com/wp-content/uploads/2023/03/Collage-Maker-27-Mar-2023-07-08-PM-8981.jpg?impolicy=Medium_Resize&w=1200&h=800" alt="DC"> Delhi Capitals</td>
+              <td>14</td>
+              <td>5</td>
+              <td>9</td>
+              <td>-0.304</td>
+              <td class="points">10</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="team-cell"><img src="https://static.india.com/wp-content/uploads/2023/03/Collage-Maker-23-Mar-2023-05-42-PM-2897.jpg?impolicy=Medium_Resize&w=1200&h=800" alt="SRH"> Sunrisers Hyderabad</td>
+              <td>14</td>
+              <td>4</td>
+              <td>10</td>
+              <td>-0.808</td>
+              <td class="points">8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">Note: This is a demo layout. For live data, connect to a backend or update the table values.</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register / Login</title>
+  <style>
+    :root{--accent:#7c5cff;--accent-2:#4cd1b6;--bg:#0f1724}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    body{
+      background: linear-gradient(135deg,#071028 0%, #0b1630 40%, #071c16 100%);
+      color:#e6eef6;display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+    .container{width:100%;max-width:980px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    .hero{
+      padding:32px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .hero h1{margin:0 0 8px;font-size:28px;letter-spacing:-0.3px}
+    .hero p{margin:0;color:rgba(230,238,246,0.8)}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    }
+    .tabs{display:flex;gap:8px;margin-bottom:18px}
+    .tabs button{flex:1;padding:10px;border-radius:10px;border:0;background:transparent;color:rgba(230,238,246,0.6);cursor:pointer}
+    .tabs button.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#071028;font-weight:600}
+
+    form{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:rgba(230,238,246,0.85)}
+    input{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit;font-size:14px}
+    input::placeholder{color:rgba(230,238,246,0.45)}
+    .row{display:flex;gap:10px}
+    .btn{padding:12px;border-radius:9px;border:0;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#05202b}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
+    .muted{font-size:13px;color:rgba(230,238,246,0.6)}
+    .message{padding:10px;border-radius:8px;font-size:14px}
+    .message.success{background:rgba(76,209,118,0.12);color:#bff4d7}
+    .message.error{background:rgba(255,99,132,0.08);color:#ffd2d8}
+
+    .welcome{display:none}
+    .welcome.active{display:block}
+
+    footer{margin-top:14px;font-size:13px;color:rgba(230,238,246,0.5)}
+
+    @media (max-width:920px){.container{grid-template-columns:1fr;}.hero{order:2}.card{order:1}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero card">
+      <h1>Welcome to CozyAuth</h1>
+      <p>Simple, local (demo) registration & login using your browser's localStorage. This is client-side only — perfect for prototypes and demos.</p>
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+      <h3>How it works</h3>
+      <ul style="margin:8px 0 0 18px; padding:0; color:rgba(230,238,246,0.8)">
+        <li>Register with a unique username and password.</li>
+        <li>Credentials are saved in <code>localStorage</code> (encoded) — no server involved.</li>
+        <li>Use the Login tab to sign in. Wrong password shows an error.</li>
+      </ul>
+      <footer>Tip: For production apps, use a server and never store raw passwords in localStorage.</footer>
+    </div>
+
+    <div class="card" style="min-height:360px">
+      <div class="tabs">
+        <button id="tab-register" class="active">Register</button>
+        <button id="tab-login">Login</button>
+      </div>
+
+      <div id="register-panel">
+        <form id="register-form">
+          <label for="r-username">Username</label>
+          <input id="r-username" placeholder="choose a username" required>
+
+          <label for="r-email">Email (optional)</label>
+          <input id="r-email" type="email" placeholder="you@example.com">
+
+          <label for="r-password">Password</label>
+          <input id="r-password" type="password" placeholder="8+ characters" minlength="4" required>
+
+          <div class="row">
+            <button class="btn primary" type="submit">Create account</button>
+            <button class="btn ghost" type="button" id="to-login">Already have an account?</button>
+          </div>
+          <div id="r-msg" style="margin-top:8px"></div>
+        </form>
+      </div>
+
+      <div id="login-panel" style="display:none">
+        <form id="login-form">
+          <label for="l-username">Username</label>
+          <input id="l-username" placeholder="your username" required>
+
+          <label for="l-password">Password</label>
+          <input id="l-password" type="password" placeholder="your password" required>
+
+          <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="muted">Not registered? <a href="#" id="to-register-link">Create account</a></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <button class="btn primary" type="submit">Sign in</button>
+          </div>
+          <div id="l-msg" style="margin-top:8px"></div>
+        </form>
+      </div>
+
+      <div id="welcome" class="welcome" style="margin-top:6px">
+        <h2 id="welcome-h">Welcome!</h2>
+        <p id="welcome-p" class="muted">You're logged in.</p>
+        <div style="margin-top:12px" class="row">
+          <button id="logout" class="btn ghost">Log out</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Utility: simple encoding (not secure) — for demo only
+    const encode = str => btoa(unescape(encodeURIComponent(str || '')));
+    const decode = str => decodeURIComponent(escape(atob(str || '')));
+
+    // users stored as JSON in localStorage at key 'cozy_users'
+    function loadUsers(){
+      try{const raw = localStorage.getItem('cozy_users'); return raw ? JSON.parse(raw) : {} }catch(e){return {}}}
+    function saveUsers(obj){localStorage.setItem('cozy_users', JSON.stringify(obj));}
+
+    // DOM refs
+    const tabReg = document.getElementById('tab-register');
+    const tabLog = document.getElementById('tab-login');
+    const registerPanel = document.getElementById('register-panel');
+    const loginPanel = document.getElementById('login-panel');
+    const welcome = document.getElementById('welcome');
+    const welcomeH = document.getElementById('welcome-h');
+    const welcomeP = document.getElementById('welcome-p');
+
+    function showTab(which){
+      if(which === 'register'){
+        tabReg.classList.add('active');tabLog.classList.remove('active');registerPanel.style.display='block';loginPanel.style.display='none';welcome.classList.remove('active');
+      } else if(which === 'login'){
+        tabReg.classList.remove('active');tabLog.classList.add('active');registerPanel.style.display='none';loginPanel.style.display='block';welcome.classList.remove('active');
+      }
+    }
+
+    tabReg.addEventListener('click',()=>showTab('register'));
+    tabLog.addEventListener('click',()=>showTab('login'));
+    document.getElementById('to-login').addEventListener('click',()=>showTab('login'));
+    document.getElementById('to-register-link').addEventListener('click',e=>{e.preventDefault();showTab('register');});
+
+    // Registration
+    document.getElementById('register-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const u = document.getElementById('r-username').value.trim();
+      const p = document.getElementById('r-password').value;
+      const email = document.getElementById('r-email').value.trim();
+      const msg = document.getElementById('r-msg');
+      msg.innerHTML = '';
+      if(!u || !p){msg.innerHTML = '<div class="message error">Please provide username & password.</div>';return}
+      const users = loadUsers();
+      if(users[u]){msg.innerHTML = '<div class="message error">That username is already taken. Try another.</div>';return}
+      // Save encoded password
+      users[u] = {password: encode(p), email: email, created: new Date().toISOString()};
+      saveUsers(users);
+      msg.innerHTML = '<div class="message success">Account created! You can now sign in.</div>';
+      // switch to login after small delay for UX
+      setTimeout(()=>{ showTab('login'); document.getElementById('l-username').value = u; document.getElementById('l-password').focus(); }, 700);
+      this.reset();
+    });
+
+    // Login
+    document.getElementById('login-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const u = document.getElementById('l-username').value.trim();
+      const p = document.getElementById('l-password').value;
+      const msg = document.getElementById('l-msg'); msg.innerHTML='';
+      if(!u || !p){msg.innerHTML='<div class="message error">Please enter username & password.</div>';return}
+      const users = loadUsers();
+      if(!users[u]){msg.innerHTML='<div class="message error">No account found for that username.</div>';return}
+      if(users[u].password !== encode(p)){
+        msg.innerHTML='<div class="message error">Incorrect password. Try again.</div>';
+        return
+      }
+      // success
+      msg.innerHTML='';
+      showWelcome(u);
+    });
+
+    function showWelcome(username){
+      registerPanel.style.display='none'; loginPanel.style.display='none';
+      welcome.classList.add('active');
+      welcomeH.textContent = `Welcome, ${username}!`;
+      const users = loadUsers();
+      const email = users[username] && users[username].email ? users[username].email : '—';
+      welcomeP.textContent = `Logged in using username: ${username} | email: ${email}`;
+      document.getElementById('logout').focus();
+    }
+
+    document.getElementById('logout').addEventListener('click', ()=>{
+      // on logout return to login
+      welcome.classList.remove('active'); showTab('login'); document.getElementById('l-password').value = '';
+    });
+
+    // quick demo: if only one user exists, prefills username on login panel
+    (function prefill(){
+      const u = loadUsers();
+      const keys = Object.keys(u);
+      if(keys.length===1){ document.getElementById('l-username').value = keys[0]; }
+    })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Indian Premier League — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--bg:#071226;--card:#0b2430;--accent:#ffcc00;--muted:#9fb4c8}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#071224 0%, #051726 100%);color:#eaf6ff}
+    header{display:flex;align-items:center;gap:18px;padding:16px 24px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04))}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f5a623);display:grid;place-items:center;color:#071224;font-weight:800}
+    nav{margin-left:auto}
+    nav a{color:var(--muted);text-decoration:none;margin-left:12px;padding:8px 10px;border-radius:8px}
+    nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
+
+    .hero{max-width:1200px;margin:24px auto;padding:28px;border-radius:14px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));display:flex;gap:18px;align-items:center}
+    .hero .left{flex:1}
+    .hero h1{margin:0;font-size:34px}
+    .hero p{color:var(--muted);margin-top:8px}
+    .hero .cta{margin-top:14px}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#f4a900);color:#071224}
+    .hero .visual{width:420px;border-radius:12px;overflow:hidden;box-shadow:0 16px 50px rgba(2,6,23,0.6)}
+    .hero .visual img{width:100%;height:260px;object-fit:cover;display:block}
+
+    .grid{max-width:1200px;margin:22px auto;display:grid;grid-template-columns:2fr 1fr;gap:18px;padding:0 18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));padding:16px;border-radius:12px}
+
+    .news-item{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .news-item img{width:88px;height:64px;object-fit:cover;border-radius:8px}
+    .sponsors{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .sponsors img{height:40px;opacity:0.9}
+
+    .teams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .team-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01)}
+    .team-card img{width:72px;height:48px;object-fit:cover;border-radius:8px}
+
+    footer{max-width:1200px;margin:28px auto;color:var(--muted);text-align:center;font-size:13px}
+
+    @media (max-width:980px){.teams-grid{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+    @media (max-width:640px){.teams-grid{grid-template-columns:1fr}.hero{flex-direction:column}.hero .visual{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">IPL</div>
+      <div>
+        <div style="font-weight:700">Indian Premier League</div>
+        <div style="font-size:13px;color:var(--muted)">Season 2023 • Tata IPL</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="homepage.html">Home</a>
+      <a href="leaguepage.html">Teams</a>
+      <a href="teampage.html">Points</a>
+      
+      <!-- <a href="contact.html">Contact</a> -->
+      <a href="registerpage.html">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="left">
+      <h1>Welcome to the official IPL fan hub</h1>
+      <p>Latest news, fixtures, team pages and player profiles — all in one place. Dive into match highlights, points table and squad details for IPL 2023.</p>
+      <div class="cta">
+        <a class="btn primary" href="teampage.html"><i class="fa fa-table"></i> View Points Table</a>
+        <a class="btn" href="leaguepage.html" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);">Explore Teams</a>
+      </div>
+      <div style="margin-top:14px;color:var(--muted);font-size:13px">Featured players: MS Dhoni • Virat Kohli • Rohit Sharma</div>
+    </div>
+    <div class="visual">
+      <img src="https://i.pinimg.com/736x/ec/45/1d/ec451dc6960200eba7f97284144cff4f.jpg" alt="Dhoni">
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Latest News</h3>
+      <div class="news-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDiJ7wG1uaHHTkHkSVAgtA3uti31DLib56rA&s" alt="news">
+        <div>
+          <strong>CSK clinch fifth title</strong>
+          <div style="color:var(--muted);font-size:13px">Chennai Super Kings defeated Gujarat Titans in a thrilling final via DLS.</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <img src="https://img.jagranjosh.com/images/2023/April/342023/highest-wicket-takers-in-ipl.webp" alt="news2">
+        <div>
+          <strong>Top run-scorers & bowlers</strong>
+          <div style="color:var(--muted);font-size:13px">See who topped the charts this season — runs, wickets and standout performances.</div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+      <h4>Upcoming fixtures</h4>
+      <p style="color:var(--muted);font-size:14px;margin:8px 0">No live fixtures — this demo shows static sample data. Replace with your feed for live updates.</p>
+    </div>
+
+    <aside class="card">
+      <h3>Quick Links</h3>
+      <ul style="color:var(--muted);padding-left:18px">
+        <li><a href="teampage.html" style="color:var(--muted);text-decoration:none">Points table</a></li>
+        <li><a href="leaguepage.html" style="color:var(--muted);text-decoration:none">Teams</a></li>
+        <li><a href="players.html" style="color:var(--muted);text-decoration:none">Players</a></li>
+        <li><a href="registerpage.html" style="color:var(--muted);text-decoration:none">Register</a></li>
+      </ul>
+
+      <h4 style="margin-top:12px">Sponsors</h4>
+      <div class="sponsors">
+        <img src="https://dummyimage.com/120x40/fff/000&text=TATA" alt="Tata">
+        <img src="https://dummyimage.com/120x40/fff/000&text=BYJU'S" alt="sponsor">
+        <img src="https://dummyimage.com/120x40/fff/000&text=Dream11" alt="sponsor">
+      </div>
+
+      <h4 style="margin-top:12px">Top Teams</h4>
+      <div class="teams-grid">
+        <div class="team-card"><img src="https://i.pinimg.com/originals/5c/2e/bf/5c2ebf4727e5349e28a57a51dea79a30.jpg" alt="GT"> Gujarat Titans</div>
+        <div class="team-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmBMb-8_GDkwx6iYJxvkOGYED-W3b7RLn08Q_MvR69gVQwjX70tS94hV1kcX_smQWy-co&usqp=CAU" alt="CSK"> Chennai Super Kings</div>
+        <div class="team-card"><img src="https://i.pinimg.com/originals/28/09/a8/2809a841bb08827603ccac5c6aee8b33.png" alt="MI"> Mumbai Indians</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    © Indian Premier League • This is a demo homepage. Replace static content with live data and proper logos for production.
+  </footer>
+</body>
+</html>
